@@ -78,9 +78,54 @@ res = op1 ^ op2;
 cout << res;
 }
 
+struct Student {
+ char name[17];
+ uint16_t year;
+ float average;
+ uint8_t gender: 1;
+ uint8_t courses;
+ Student* starosta;
+ };
 
 int main()
 {
+ Student students [3] = {
+     {
+         "Nastya", 2018, 4.5, 1, 1, nullptr
+     },
+     {
+         "Misha", 2015, 5.0, 0, 4, &students[0]
+     },
+     {
+         "Marina", 2013, 2.5, 1, 6, &students[0]
+     }
+};
+
+cout << "Address of students" << '\n';
+cout << & students;
+cout << '\n' << "Size of students" << '\n';
+cout << sizeof (students) << '\n';
+
+ for (Student stud:students)
+ {
+     cout << "Address of student" << '\n';
+     cout << & stud;
+     cout << '\n' << "Size of student" << '\n';
+     cout << sizeof (stud) << '\n';
+ }
+
+     cout << "Adress name of student 2" << '\n' << &students[1].name << '\n';
+
+
+
+
+
+
+
+
+
+
+  /*
 uint32_t u8 = 0x42;
 cout << "u8 bytes: ";
 print_in_hex(&u8, sizeof(u8));
@@ -116,5 +161,7 @@ print_in_binary(15);
     assert(nibble_to_hex(0xd) == 'd');
     assert(nibble_to_hex(0xe) == 'e');
     assert(nibble_to_hex(0xf) == 'f');
+
+     */
     return 0;
 }
